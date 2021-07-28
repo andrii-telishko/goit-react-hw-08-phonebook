@@ -27,7 +27,6 @@ class LoginView extends Component {
         return (
             <div>
                 <h1 >Log In Page</h1>
-
                 <form
                     onSubmit={this.handleSubmit}
                     className='reg-form'
@@ -52,12 +51,11 @@ class LoginView extends Component {
                             onChange={this.handleChange}
                         />
                     </label>
-
                     <button type="submit" className='reg-button'>Log In</button>
                 </form>
             </div>
         );
-    }
+    };
 };
 
 const mapDispatchToProps = {

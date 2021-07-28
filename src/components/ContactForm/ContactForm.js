@@ -25,16 +25,12 @@ class ContactForm extends Component {
 
         const { name, number } = this.state;
 
-
-
         if (name !== '' && number !== '') {
-            this.props.allContacts.find(contact => contact.name === name)
+            this.props.allContacts.find(contact => contact.number === number)
                 ? alert('Hello')
                 : this.props.onSubmit(name, number);
             this.reset();
-        }
-        else { alert('Please fill empty fields') }
-
+        } else { alert('Please fill empty fields') }
     };
 
     reset() {

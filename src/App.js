@@ -23,22 +23,18 @@ class App extends Component {
         <Suspense fallback={<h3>Loading...</h3>}>
           <Switch>
             <PublicRoute exact path="/" component={HomeView} />
-            {/* <Route exact path="/" component={HomeView} /> */}
             <PublicRoute
               path="/register"
               restricted
               redirectTo="/contacts"
               component={RegisterView}
             />
-            {/* <Route path="/register" component={RegisterView} /> */}
-            {/* <Route path="/login" component={LoginView} /> */}
             <PublicRoute
               path="/login"
               restricted
               redirectTo="/contacts"
               component={LoginView}
             />
-            {/* <Route path="/contacts" component={ContactsView} /> */}
             <PrivateRoute
               path="/contacts"
               redirectTo="/login"
@@ -46,13 +42,10 @@ class App extends Component {
             />
           </Switch>
         </Suspense>
-
       </Container >
     );
   };
 };
-
-
 
 const mapDispatchToProps = {
   onGetCurrentUser: authOperations.getCurrentUser,
