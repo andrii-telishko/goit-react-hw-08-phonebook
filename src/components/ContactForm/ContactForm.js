@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './ContactForm.scss'
 import { connect } from 'react-redux';
 import { contactsOperations } from '../../redux/contacts'
+import { getFilteredContacts } from '../../redux/contacts/contactsSelectors'
 import '../../styles/base.scss';
 
 class ContactForm extends Component {
@@ -21,13 +22,19 @@ class ContactForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+
         const { name, number } = this.state;
+
+
+
         if (name !== '' && number !== '') {
-            this.props.onSubmit(name, number);
+            this.props.allContacts.find(contact => contact.name === name)
+                ? alert('Hello')
+                : this.props.onSubmit(name, number);
             this.reset();
-            return
-        };
-        alert('Please fill empty fields')
+        }
+        else { alert('Please fill empty fields') }
+
     };
 
     reset() {
@@ -59,8 +66,12 @@ class ContactForm extends Component {
     };
 };
 
+const mapStateToProps = state => ({
+    allContacts: getFilteredContacts(state)
+})
+
 const mapDispatchToProps = dispatch => ({
     onSubmit: (name, number) => dispatch(contactsOperations.addContact(name, number)),
 });
 
-export default connect(null, mapDispatchToProps)(ContactForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

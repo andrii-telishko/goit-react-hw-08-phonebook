@@ -5,13 +5,7 @@ const { fetchContactsRequest, fetchContactsSuccess, fetchContactsError, addConta
 
 const contactsFormReducer = createReducer([], {
     [fetchContactsSuccess]: (_, { payload }) => payload,
-    [addContactSuccess]: (state, { payload }) => {
-        if (state.map(({ number }) => number).includes(payload.number)) {
-
-            return alert(`${payload.number} is already exist`)
-        };
-        return [...state, payload]
-    },
+    [addContactSuccess]: (state, { payload }) => [...state, payload],
     [deleteContactSuccess]: (state, { payload }) =>
         state.filter(({ id }) => id !== payload),
 });
