@@ -4,19 +4,7 @@ import { authSelectors, authOperations } from '../../redux/auth';
 import defaultAvatar from './defaultAvatar.jpg';
 import './UserMenu.scss'
 
-const styles = {
-    container: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-    avatar: {
-        marginRight: 4,
-    },
-    name: {
-        fontWeight: 700,
-        marginRight: 12,
-    },
-};
+
 
 const UserMenu = ({ avatar, name, onLogout }) => (
     <div className='user-container'>

@@ -89,7 +89,7 @@ const getCurrentUser = () => (dispatch, getState) => {
     dispatch(authActions.getCurrentUserRequest());
 
     axios.get('/users/current').then(({ data }) => {
-        token.unset()
+
         dispatch(authActions.getCurrentUserSuccess(data))
     }
     ).catch(({ message }) =>
