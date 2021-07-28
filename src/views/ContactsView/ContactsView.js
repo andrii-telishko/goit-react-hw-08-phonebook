@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactForm from '../../components/ContactForm';
 import Filter from '../../components/Filter';
-// import ContactsList from '../../components/ContactList'
+import ContactsList from '../../components/ContactList'
 
 const ContactsView = () => (
     <>
@@ -9,7 +9,7 @@ const ContactsView = () => (
         <ContactForm />
         <h2>Contacts</h2>
         <Filter />
-        {/* <ContactsList /> */}
+        <ContactsList />
     </>);
 
 export default ContactsView;

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ContactForm.scss'
-// import '../../styles/base.scss';
+import { connect } from 'react-redux';
+import { operations } from '../../redux/contacts'
+import '../../styles/base.scss';
 
 class ContactForm extends Component {
-    // static propTypes = {
-    //     onSubmit: PropTypes.func.isRequired
-    // };
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired
+    };
 
     state = {
         name: '',
@@ -17,16 +19,16 @@ class ContactForm extends Component {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
     };
 
-    // handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     const { name, number } = this.state;
-    //     if (name !== '' && number !== '') {
-    //         this.props.onSubmit(name, number);
-    //         this.reset();
-    //         return
-    //     };
-    //     alert('Please fill empty fields')
-    // };
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { name, number } = this.state;
+        if (name !== '' && number !== '') {
+            this.props.onSubmit(name, number);
+            this.reset();
+            return
+        };
+        alert('Please fill empty fields')
+    };
 
     reset() {
         this.setState({ name: '', number: '' });
@@ -57,8 +59,8 @@ class ContactForm extends Component {
     };
 };
 
-// const mapDispatchToProps = dispatch => ({
-//     onSubmit: (name, number) => dispatch(operations.addContact(name, number)),
-// });
+const mapDispatchToProps = dispatch => ({
+    onSubmit: (name, number) => dispatch(operations.addContact(name, number)),
+});
 
-export default ContactForm;
+export default connect(null, mapDispatchToProps)(ContactForm);
