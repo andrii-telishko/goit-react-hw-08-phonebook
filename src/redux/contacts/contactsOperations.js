@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { actions } from './'
+import { contactsActions } from './'
 
-const { fetchContactsRequest, fetchContactsSuccess, fetchContactsError, addContactRequest, addContactSuccess, addContactError, deleteContactRequest, deleteContactSuccess, deleteContactError } = actions;
+const { fetchContactsRequest, fetchContactsSuccess, fetchContactsError, addContactRequest, addContactSuccess, addContactError, deleteContactRequest, deleteContactSuccess, deleteContactError } = contactsActions;
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
